@@ -16,8 +16,6 @@ export default class App extends React.Component {
       filterBy: '',
       sortBy: 'lastName',
     };
-
-    console.log('constructor end');
   }
 
   componentDidMount() {
@@ -25,20 +23,24 @@ export default class App extends React.Component {
     // this.sortBy();
   }
 
-  // sets the filtering requirements for names
+  // sets the filtering requirements for names based on search box input
   handleSearchChange = (event) => {
-    console.log('search value', event.target.value);
+    // console.log('search value', event.target.value);
     const filter = event.target.value;
-    console.log('filter=', filter);
+    // console.log('filter=', filter);
     this.setState({ filterBy: filter }, () => {
-      console.log('Now state.filterBy', this.state);
+      // console.log('Now state.filterBy', this.state);
       this.filterBy();
     });
   };
 
-  // sets the sorting requirements
+  // sets the sorting requirements based on drop down menu options
   handleSortSelection = (event) => {
-    console.log('button value');
+    // console.log('button value', event.target.value);
+    const sortValue = event.target.value;
+    this.setState({ sortBy: sortValue }, () => {
+      this.sortBy();
+    });
   };
 
   filterBy = () => {
@@ -61,11 +63,8 @@ export default class App extends React.Component {
   sortBy = () => {
     console.log('sortBy', this.state.sortBy);
 
-    // const sortedArr = this.state.parsedEmployeeArr.map(employee => {
-    //   employee.firstName
-    // }
-
     let sortedArr = [...this.state.parsedEmployeeArr];
+    // create a new array sorted by either first name, last name, or username alphabetically
     sortedArr.sort((a, b) =>
       a[this.state.sortBy] > b[this.state.sortBy] ? 1 : -1
     );
