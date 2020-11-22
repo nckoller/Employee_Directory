@@ -1,12 +1,12 @@
 import React from 'react';
 import '../App.css';
 
-function SearchBox({ handleSearchChange }) {
+export function SearchBox({ handleSearchChange }) {
   return (
     <div>
-      <form class="form-inline my-2 my-lg-0">
+      <form className="form-inline my-2 my-lg-0">
         <input
-          class="form-control mr-sm-2"
+          className="form-control mr-sm-2"
           type="search"
           placeholder="Search by name"
           onChange={(e) => handleSearchChange(e)}
@@ -16,4 +16,3 @@ function SearchBox({ handleSearchChange }) {
   );
 }
 
-export default SearchBox;
