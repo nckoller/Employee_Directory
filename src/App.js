@@ -6,18 +6,6 @@ import { Header } from './components/Header';
 // THIS will be a class based component IMO
 // you'll use state to control 4 variables: filter, sort, employeeArr, sortedArr
 
-// function App(props) {
-//   console.log("APP INIT PROPS", props);
-//   return (
-//   <div className="App">
-//     {/* <Header/> */}
-//     {/* this.state.variablename */}
-//     <EmployeeGrid employeeArr={props.data}/>
-//     This is some test text
-//   </div>
-//   );
-// }
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -33,12 +21,26 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.filterBy();
-    this.sortBy();
+    this.filterBy();
+    // this.sortBy();
   }
 
-  // for both, create a const SomeConst = your code for filtering or sorting
-  // setState() to set parsedEmployeeArr to that const
+  // sets the filtering requirements for names
+  handleSearchChange = (event) => {
+    console.log('search value', event.target.value);
+    const filter = event.target.value;
+    console.log('filter=', filter);
+    this.setState({ filterBy: filter }, () => {
+      console.log('Now state.filterBy', this.state);
+      this.filterBy();
+    });
+  };
+
+  // sets the sorting requirements
+  handleSortSelection = (event) => {
+    console.log('button value');
+  };
+
   filterBy = () => {
     // console.log('filterBy', this.state.filterBy);
     // use array.filter method
@@ -49,7 +51,6 @@ export default class App extends React.Component {
         employee.lastName.toLowerCase();
       return employeeName.includes(this.state.filterBy);
       //thing that is true or false
-      // return employeeName.indexOf(filteredArr.toLowerCase()) !== -1;
     });
     console.log('filtered', filteredArr);
     this.setState({
@@ -59,18 +60,18 @@ export default class App extends React.Component {
 
   sortBy = () => {
     console.log('sortBy', this.state.sortBy);
-   
+
     // const sortedArr = this.state.parsedEmployeeArr.map(employee => {
     //   employee.firstName
     // }
 
     let sortedArr = [...this.state.parsedEmployeeArr];
-    sortedArr.sort((a, b) => (a[this.state.sortBy] > b[this.state.sortBy] ? 1 : -1));
+    sortedArr.sort((a, b) =>
+      a[this.state.sortBy] > b[this.state.sortBy] ? 1 : -1
+    );
     this.setState({
       parsedEmployeeArr: sortedArr,
     });
-
-    // use map
   };
 
   render() {
@@ -79,11 +80,13 @@ export default class App extends React.Component {
     // this.sortBy();
     return (
       <div className="App">
-        <Header />
+        <Header
+          handleSearchChange={this.handleSearchChange}
+          handleSortSelection={this.handleSortSelection}
+        />
         <EmployeeGrid employeeArr={this.state.parsedEmployeeArr} />
         This is some test text
       </div>
     );
   }
 }
-

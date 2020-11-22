@@ -3,12 +3,12 @@ import '../App.css';
 import { SearchBox } from './SearchBox';
 import { SortMenu } from './SortMenu';
 
-export function Header() {
+export function Header({ handleSearchChange, handleSortSelection }) {
   return (
     <header className="jumbotron header-text">
       <h1>Staff Directory</h1>
-      <SearchBox />
-      <SortMenu />
+      <SearchBox handleSearchChange={handleSearchChange} />
+      <SortMenu handleSortSelection={handleSortSelection} />
     </header>
   );
 }
