@@ -3,8 +3,7 @@ import './App.css';
 import { EmployeeGrid } from './components/EmployeeGrid';
 import { Header } from './components/Header';
 
-// THIS will be a class based component IMO
-// you'll use state to control 4 variables: filter, sort, employeeArr, sortedArr
+// use state to control 4 variables: filter, sort, employeeArr, sortedArr
 
 export default class App extends React.Component {
   constructor(props) {
@@ -44,9 +43,8 @@ export default class App extends React.Component {
   };
 
   filterBy = () => {
-    // console.log('filterBy', this.state.filterBy);
     // use array.filter method
-    const filteredArr = this.state.parsedEmployeeArr.filter((employee) => {
+    const filteredArr = this.state.employeeArr.filter((employee) => {
       const employeeName =
         employee.firstName.toLowerCase() +
         ' ' +
@@ -54,15 +52,13 @@ export default class App extends React.Component {
       return employeeName.includes(this.state.filterBy);
       //thing that is true or false
     });
-    console.log('filtered', filteredArr);
+
     this.setState({
       parsedEmployeeArr: filteredArr,
     });
   };
 
   sortBy = () => {
-    console.log('sortBy', this.state.sortBy);
-
     let sortedArr = [...this.state.parsedEmployeeArr];
     // create a new array sorted by either first name, last name, or username alphabetically
     sortedArr.sort((a, b) =>
@@ -74,9 +70,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    // console.log("when does render happen?")
-    // console.log(this.state.parsedEmployeeArr)
-    // this.sortBy();
     return (
       <div className="App">
         <Header
@@ -84,7 +77,6 @@ export default class App extends React.Component {
           handleSortSelection={this.handleSortSelection}
         />
         <EmployeeGrid employeeArr={this.state.parsedEmployeeArr} />
-        This is some test text
       </div>
     );
   }
