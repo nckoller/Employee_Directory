@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { EmployeeGrid } from './components/EmployeeGrid';
-// import { Header } from './components/Header';
+import { Header } from './components/Header';
 
 // THIS will be a class based component IMO
 // you'll use state to control 4 variables: filter, sort, employeeArr, sortedArr
@@ -79,7 +79,7 @@ export default class App extends React.Component {
     // this.sortBy();
     return (
       <div className="App">
-        {/* <Header /> */}
+        <Header />
         <EmployeeGrid employeeArr={this.state.parsedEmployeeArr} />
         This is some test text
       </div>
@@ -87,4 +87,3 @@ export default class App extends React.Component {
   }
 }
 
-// export default App;
