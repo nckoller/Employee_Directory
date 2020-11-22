@@ -13,29 +13,20 @@ export default class App extends React.Component {
       employeeArr: props.data,
       parsedEmployeeArr: [...props.data],
       filterBy: '',
-      sortBy: 'lastName',
+      sortBy: '',
     };
-  }
-
-  componentDidMount() {
-    this.filterBy();
-    // this.sortBy();
   }
 
   // sets the filtering requirements for names based on search box input
   handleSearchChange = (event) => {
-    // console.log('search value', event.target.value);
     const filter = event.target.value;
-    // console.log('filter=', filter);
     this.setState({ filterBy: filter }, () => {
-      // console.log('Now state.filterBy', this.state);
       this.filterBy();
     });
   };
 
   // sets the sorting requirements based on drop down menu options
   handleSortSelection = (event) => {
-    // console.log('button value', event.target.value);
     const sortValue = event.target.value;
     this.setState({ sortBy: sortValue }, () => {
       this.sortBy();

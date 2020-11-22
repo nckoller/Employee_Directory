@@ -3,7 +3,7 @@ import '../App.css';
 
 export function Card(props) {
   return (
-    <div className="col-sm-4 employee-card">
+    <div className="col-lg-4 employee-card">
     <div className="card">
       <img
         className="card-img-top photo"
