@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,eACE,eAAgB,CAChB,kBACF,CAEA,OACE,YACF","file":"main.2051d34e.chunk.css","sourcesContent":[".employee-card {\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n}\n\n.photo {\n  padding: 3rem;\n}\n"]}
